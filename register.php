@@ -2,24 +2,25 @@
 <?php
 
 
-$database= new PDO('mysql:host=localhost;dbname=account;charset=utf8','root','' );
+$database= new PDO('mysql:host=localhost;dbname=account;charset=utf8','root','', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 
 
-if (isset($_POST["password"]) && isset($_POST["username"])){
+if (isset($_POST["password"]) && isset($_POST["pseudo"])){
     
 $password=$_POST["password"];
-$username=$_POST["username"];
+$pseudo=$_POST["pseudo"];
 
-    if ((!empty($username)) && (!empty($password)) && (strlen("$password")>8))
+    if ((!empty($pseudo)) && (!empty($password)) && (strlen("$password")>8) && (preg_match('#^(?=.*[A-Z])#', $password)))
     {
-        $result=$database->query("INSERT INTO user(password, pseudo) VALUE('$password', '$username')");
 
         echo "Les données ont été transmises";
+        $result=$database->query("INSERT INTO user(password, pseudo) VALUE('$password', '$pseudo')");
         
     }
     else{
 
-        echo "Les données n'ont pas pu être transmises";
+        echo "données non transmises";
+       
         
     }
 

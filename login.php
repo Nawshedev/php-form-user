@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,35 +16,41 @@
     />
 
     <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
 
-    <title>Document</title>
+    <title>Connexion</title>
   </head>
   <body>
     <div
-      class="d-flex justify-content-center align-items-center"
+      class="d-flex justify-content-center align-items-center bg-light"
       style="min-height: 100vh"
     >
       <form
         class="p-5 rounded shadow"
         style="width: 40rem"
-        action="register.php"
+        action="loginttt.php"
         method="post"
       >
-        <h1 class="text-center pb-5 display-4">Login</h1>
+        <h1 class="text-center pb-5 display-4">Se connecter</h1>
+        <?php if (isset ($_GET['error'])){?>
+
+        
+        <div class="alert alert-danger" role="alert">
+  <?=$_GET['error']?>
+</div><?php } ?>
         <div class="mb-3">
-          <label for="username" class="form-label">Pseudo</label>
+          <label for="pseudo" class="form-label">Pseudo</label>
           <input
             type="text"
             class="form-control"
-            id="username"
-            name="username"
+            id="pseudo"
+            name="pseudo"
           />
         </div>
         <div class="mb-3">
@@ -50,9 +58,20 @@
           <input type="password" class="form-control" name="password" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <br />
+
+       
+
+
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <br />
+
+        <p>Pas encore de compte? <a href="index.php">Enregistrez-vous</a></p>
       </form>
     </div>
+    <script src="script.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
